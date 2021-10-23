@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Print N Natural Numbers using a For Loop</h1>
+<br>
+<p>
+<a href="index.html">Back to Home Page</a>
+</p>
+<br>
+<p>
+<label for="nlimit">Input a value for n:</label>
+<input id="nlimit" type="number"></input>
+<button onclick="ShowNumbers()">Show Numbers</button>
+</p>
+<h3 id="ntitle"></h3>
+
+<p id="nnumbers"></p>
+<script>
+function ShowNumbers() {
+
+    var nlimit,i,ntext;
+
+    nlimit = document.getElementById("nlimit").value;
+
+    ntext="";
+    i=1;
+
+    for (i = 1; i <=nlimit; i++) {
+        ntext += i+" ";
+    }
+   
+
+    //console.log(nlimit);
+    //console.log(ntext);
+
+    document.getElementById("ntitle").innerHTML=
+      "The first "+nlimit+" natural numbers are:";
+
+    document.getElementById("nnumbers").innerHTML=
+       ntext;
+
+
+
+}    
+
+</script>
+</body>
+
+</html>

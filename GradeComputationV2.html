@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Grade Computation Version #2</h1>
+
+<p>
+<label for="score">Score</label> 
+<input id="score" name="score" type="number">
+<label for="items">Items</label> 
+<input id="items" name="items" type="number">
+<label for="base">Base</label> 
+<input id="base" name="base" type="number">
+
+<button onclick="computegrade()"> Compute Grade </button>
+</p>
+ 
+<h2 id="grade"></h2>
+<h2 id="letterg"></h2>
+<h2 id="grcomment"></h2>
+
+ <br> 
+ <p>  
+  <a href="index.html">Back to Home Page</a>
+</p>
+
+<script>
+function computegrade()
+{
+  var x,y,z,lg,cm,cp;
+
+  x = document.getElementById("score").value*1;  // automatically converts to number
+  y = document.getElementById("items").value*1;   // to avoid a parseFloat
+  z = document.getElementById("base").value*1;
+
+  // console.log(x);
+ // console.log(y);
+ // console.log(z);
+    
+   let g=Math.round((x/y)*(100-z)+z);
+  
+ //  console.log(g);
+
+   if (g < 72) {
+      lg = "F";
+   } else if (g>=72 && g<=75) {
+      lg = "D";
+   } else if (g>=76 && g<=79) {
+      lg = "C";
+   } else if (g>=80 && g<=83) {
+      lg = "C+";
+   } else if (g>=84 && g<=87) {
+      lg = "B";
+   } else if (g>=88 && g<=91) {
+      lg = "B+";
+    } else  {
+      lg = "A";
+  
+   }      
+         
+  switch (lg) {
+      case 'F':
+          cm="Failing Grade";
+          cp="a";
+          break;
+       case 'D':
+          cm="Passing Grade";
+          cp="a";
+          break;
+       case 'C':
+       case 'C+':
+          cm="Average Grade";
+          cp="an";          
+          break; 
+       case 'B':
+          cm="Good Grade";
+          cp="a";          
+          break;
+        case 'B+':
+          cm="Very Good Grade";
+          cp="a";          
+          break;
+       default:
+          cm="Excellent Grade";
+          cp="an";          
+          break;       
+  
+}
+
+
+   document.getElementById("grade").innerHTML='The grade for '
+    +x+"/"+y+" using base "+z+" is "+g;
+
+   document.getElementById("letterg").innerHTML='The equivalent is '+lg;    
+   document.getElementById("grcomment").innerHTML='That is '+cp+' '+cm;
+
+
+}
+   
+</script>
+</body>
+</html>

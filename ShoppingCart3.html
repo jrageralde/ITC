@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #cart {
+          font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        #cart td, #cart th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+        
+        #cart tr:nth-child(even){background-color: #f2f2f2;}
+        #cart tr:nth-child(odd){background-color: #bfddf1;}
+             
+        
+        #cart th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #4CAF50;
+          color: white;
+        }
+    </style>
+</head>
+<body onload="initcart()">
+
+<h1>Simple Shopping Cart Version #3 - Styling the Cart</h1>
+<br>
+<p>
+<a href="index.html">Back to Home Page</a>
+</p>
+<br>
+
+<p>
+<label for="itemdesc">Choose an item:</label>    
+<select name="itemdesc" id="itemdesc">
+  <option value="sardines">sardines</option>
+  <option value="hotdog">hotdog</option>
+  <option value="shampoo">shampoo</option>
+  <option value="toothpaste">toothpaste</option>
+  <option value="noodles">noodles</option>
+</select>
+
+<label for="qty">Quantity:</label>
+<input id="qty" name="qty" type="number" oninput="computeamount()"></input>
+<label for="price">Unit Price:</label>
+<input id="price" name="price" type="number" oninput="computeamount()"></input>
+<label for="amount">Amount:</label>
+<input id="amount" name="amount" type="number" readonly></input>
+<button onclick="addtocart()">Add to Cart</button>
+</p>
+<p>
+<label for="items">Cart Items:</label>
+<input id="items" name="items" type="number" readonly></input>
+<button onclick="clearcart()">Clear Cart</button>
+<!--   <button onclick="showcart()">Show Cart</button> --> 
+<label for="delitem">Delete Item:</label>
+<input id="delitem" name="delitem" type="number" ></input>
+<button onclick="deleteitem()" >Delete</button>  
+</p>
+
+<p id="cart"></p>
+<script>
+
+
+    // Initialize cart      
+    function initcart(){
+        cart=[];
+        document.getElementById("items").value=cart.length;
+        document.getElementById("cart").innerHTML="";
+
+            
+    }
+
+    // Clear Cart
+    function clearcart(){
+        var toclear;
+
+        toclear=confirm("Delete all item(s) from cart ?");
+
+        if (toclear) {
+             initcart();
+        }
+            
+    }
+
+    // Add item to cart
+    function addtocart(){
+         
+         var cartitem = {
+             "item": "1",
+             "price": 0,
+             "qty": 1,
+            "itemamount" : function itemamount(){
+                 return Math.round(this.price*this.qty*100)/100;  
+               }
+            };
+
+          cartitem.item=document.getElementById("itemdesc").value;
+          cartitem.qty=document.getElementById("qty").value;
+          cartitem.price=document.getElementById("price").value;
+
+          console.log(cartitem.item);
+          console.log(cartitem.qty);
+          console.log(cartitem.price);
+
+
+           cart.push(cartitem);
+          //cart[cart.length]=cartitem;
+
+          console.log(cart.length);
+          document.getElementById("items").value=cart.length;
+
+          showcart();
+
+    }
+
+    // Compute Amount per Item
+    function computeamount() {
+          var q,p,q;
+          q = document.getElementById("qty").value*1;
+          p = document.getElementById("price").value*1;
+
+          a = Math.round(q*p*100)/100;  // rounds off to 2 decimal places
+
+          console.log(a);
+
+          document.getElementById("amount").value=a;
+        
+    }    
+    
+    // Delete item from chart
+    function deleteitem(){
+        var todelete;
+        var itemno;
+
+        itemno=document.getElementById("delitem").value;
+
+        todelete=confirm("Delete item no. "+itemno+"?");
+
+        if (todelete) {
+
+             cart.splice(itemno-1,1);
+             document.getElementById("items").value=cart.length;
+             showcart();   
+        }
+
+    }
+
+    // Show the contents of the cart
+    function showcart(){
+
+        var i,l,carttext,totalamount,ln;
+        var theader,tbody,tb,tfooter;
+
+    
+        // Generate table header;
+        theader ="<thead>";
+        theader+="<tr>";
+        theader+="<th>No.</th>";
+        theader+='<th style="text-align:left" >Item</th>';
+        theader+="<th>Quantity</th>";
+        theader+='<th style="text-align:right">Price</th>';
+        theader+="<th>Amount</th>";
+        theader+="</tr>";
+        theader+="</thead>";
+        
+        // Generate Table Body
+        l = cart.length;
+      
+        
+      //  for (i=0,totalamount=0,carttext="",tbody='<tbody id="cart">';i<l;i++){
+        for (i=0,totalamount=0,carttext="",tbody='';i<l;i++){
+            ln=i+1;    
+            tbody += "<tr>"
+                +'<td>'+ln+' </td>'
+                +'<td>'+cart[i].item+' </td>'
+                +'<td style="text-align:right">'+cart[i].qty+'</td>'
+                +'<td style="text-align:right">'+cart[i].price+'</td>'
+                +'<td style="text-align:right">'+cart[i].itemamount()+'</td>'                
+                +"</tr>";
+                       
+            totalamount+=cart[i].itemamount();
+        
+
+        }
+
+       // tbody += "</tbody>";
+
+        // Generate table footer;
+        tfooter ="<tfoot>";
+        tfooter+="<tr>";
+        tfooter+='<th style="text-align:left">'+cart.length+'</th>';
+        tfooter+='<th style="text-align:left">Items</th>';
+        tfooter+='<th></th>';
+        tfooter+='<th>Total Amount</th>';
+        tfooter+='<th style="text-align:right">'+totalamount+'</th>';
+        tfooter+="</tr>";
+        tfooter+="</tfoot>";
+
+       console.log(theader+tbody+tfooter);
+        document.getElementById("cart").innerHTML=
+           '<table>'+theader+tbody+tfooter+'</table>';
+
+
+    }
+  
+// Global variable
+var cart = []; 
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Add two numbers Version 1 - Using Prompts</h1>
+<br>
+<p>
+<a href="index.html">Back to Home Page</a>
+</p>
+<br>
+
+<button onclick="clickbtn()">Compute the sum</button>
+
+<script>
+function clickbtn()
+{
+   let a='', b='',x=0,y=0;
+    
+   a=prompt('The first number:');
+   b=prompt('The second number:');
+
+   x=parseInt(a);
+   y=parseInt(b);
+  
+   let z=x+y;
+
+   document.write('<h2>The sum is:'+z+'</h2> <br>');
+   document.write('<br><a href="Add2numbersV1.html">Add again</a>');
+   document.write('<br><a href="index.html">Back to Home Page</a>');
+}
+   
+</script>
+
+</body>
+</html>

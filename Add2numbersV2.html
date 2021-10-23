@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Add two numbers Version 2 - Using Input and Labels</h1>
+
+<p>
+<label for="n1">First Number</label> 
+<input id="n1" name="n1" type="number">
+<label for="n2">Second Number</label> 
+<input id="n2" name="n2" type="number">
+
+<button onclick="computesum()"> Compute Sum </button>
+</p>
+ 
+<p>
+<label for="sum" id="sumlabel">The sum is:</label>  
+<input id="sum" name="sum" type="number" readonly></input>
+</p>
+   <br> 
+ <p>  
+  <a href="index.html">Back to Home Page</a>
+</p>
+<script>
+function computesum()
+{
+  var x,y;
+
+  // Retrieve the user input 
+  x = document.getElementById("n1").value*1;  // *1 Converts the result to number
+  y = document.getElementById("n2").value*1;  // to avoid having to use parseFloat
+
+ // console.log(x);
+ // console.log(y);
+
+  // Compute the sum
+  let z  = x+y;
+
+  // Display the result
+  document.getElementById("sumlabel").innerHTML='The sum of '
+       +x+' and '+y+' is:';
+   document.getElementById("sum").value=z;
+
+}
+   
+</script>
+</body>
+</html>
