@@ -26,12 +26,12 @@
 <input id="price" name="price" type="number" onkeyup="computeamount()"></input>
 <label for="amount">Amount:</label>
 <input id="amount" name="amount" type="number" readonly></input>
-<button onclick="addtocart()">Add to Cart</button>
+<button id="addtocart">Add to Cart</button>
 </p>
 <p>
 <label for="items">Cart Items:</label>
 <input id="items" name="items" type="number" readonly></input>
-<button onclick="initcart()">Clear Cart</button><button onclick="showcart()">Show Cart</button>
+<button id="initcart">Clear Cart</button><button id="showcart">Show Cart</button>
 </p>
 <p id="cartheader"></p>
 <p id="cart"></p>
@@ -40,7 +40,8 @@
 
 
     // Initialize cart      
-    function initcart(){
+    document.getElementById("initcart").addEventListener("click", () => {
+    
         cart=[];
         document.getElementById("items").value=cart.length;
         document.getElementById("cartheader").innerHTML="";
@@ -50,7 +51,7 @@
     }
 
     // Add item to cart
-    function addtocart(){
+  document.getElementById("addtocart").addEventListener("click", () => {                                                         
          
          var ci = {
              "item": "1",
@@ -93,8 +94,8 @@
     }    
     
     // Show the contents of the cart
-    function showcart(){
-
+    document.getElementById("showcart").addEventListener("click", () => {
+    
         var i,l,carttext,totalamount;
 
         l = cart.length;
