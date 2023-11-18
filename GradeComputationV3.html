@@ -25,8 +25,12 @@
 </p>
 
 <script>
-function computegrade()
-{
+ 
+ // add a click event listener for computegrade button OLD JAVASCRIPT VERSION SYNTAX
+  //  document.getElementById("computegrade").addEventListener("click", function() {
+ // add a click event listener for computegrade button NEW JAVASCRIPT VERSION SYNTAX
+ 
+ document.getElementById("computegrade").addEventListener("click", () => {
   var x,y,z,lg,cm,cp;
 
   x = document.getElementById("score").value*1;  // automatically converts to number
