@@ -48,7 +48,7 @@
         document.getElementById("cart").innerHTML="";
         document.getElementById("cartfooter").innerHTML="";
             
-    }
+    });
 
     // Add item to cart
   document.getElementById("addtocart").addEventListener("click", () => {                                                         
@@ -77,7 +77,7 @@
           console.log(cart.length);
           document.getElementById("items").value=cart.length;
 
-    }
+    });
 
     // Compute Amount per Item
     function computeamount() {
@@ -126,7 +126,7 @@
         document.getElementById("cartfooter").innerHTML=
            "Items bought:"+cart.length+" Total Amount:"+totalamount;
 
-    }
+    });
   
 // Global variable
 var cart = []; 
