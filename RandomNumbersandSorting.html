@@ -14,20 +14,20 @@
 <p>
 <label for ="nnumbers">How many numbers to generate?</label>
 <input id="nnumbers" name="nnumbers" type ="number"></input>
-<button id="gennumbers()">Generate the Numbers</button>
+<button id="btngennumbers">Generate the Numbers</button>
 </p>
 <p id="rnumbers"></p>
-<button id="sortnumbers()">Sort the Numbers</button>
+<button id="btnsortnumbers">Sort the Numbers</button>
 <p id="sortednumbers"></p>
 
-<button "reversenumbers()">Reverse the Numbers</button>
+<button id="btnreversenumbers">Reverse the Numbers</button>
 <p id="reversenumbers"></p>
 
 
 
 </body>
 <script>
-    document.getElementById("gennumbers").addEventListener("click", () => {
+    document.getElementById("btngennumbers").addEventListener("click", () => {
     
         var nnumbers,n,j,rnumbers;
 
@@ -48,7 +48,7 @@
         document.getElementById("rnumbers").innerHTML=rnumbers;  
     });
 
-    document.getElementById("sortnumbers").addEventListener("click", () => {
+    document.getElementById("btnsortnumbers").addEventListener("click", () => {
         var rnumbers,j;
 
         Anumbers.sort(function(a, b){return a - b})
@@ -61,7 +61,7 @@
         document.getElementById("sortednumbers").innerHTML=rnumbers;  
     });
 
-     document.getElementById("reveresenumbers").addEventListener("click", () => {
+     document.getElementById("btnreveresenumbers").addEventListener("click", () => {
      
         var rnumbers,j;
 
