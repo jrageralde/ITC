@@ -79,6 +79,14 @@
 
     });
 
+   document.getElementById("qty").addEventListener("keyup", () => {          
+       computeamount();
+   });
+
+  document.getElementById("price").addEventListener("keyup", () => {          
+       computeamount();
+   });
+  
     // Compute Amount per Item
     function computeamount() {
           var q,p,q;
