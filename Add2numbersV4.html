@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
 
+<h1>Add two numbers Version 4 - Using Javascript Event Listeners for Button Events</h1>
+
+<p>
+<label for="n1">First Number</label> 
+<input id="n1" name="n1" type="number">
+<label for="n2">Second Number</label> 
+<input id="n2" name="n2" type="number">
+
+<button id="computesum">Compute Sum </button>
+<button id="clearvalues">Clear Values</button>  
+</p>
+ 
+<p>
+<label for="sum" id="sumlabel">The sum is:</label>  
+<input id="sum" name="sum" type="number" readonly></input>
+</p>
+   <br> 
+ <p>  
+  <a href="index.html">Back to Home Page</a>
+</p>
+<script>
+   // add a click event listener to the compute sum button
+    document.getElementById("computesum").addEventListener("click", function() {
+        var x1,x2,x3;
+
+        x1 = document.getElementById("n1").value*1;
+        x2 = document.getElementById("n2").value*1;        
+
+        x3 = x1+x2;
+
+        document.getElementById("sum").value = x3;
+
+     });        
+
+    // add a click event listener to the compute sum button
+    document.getElementById("clearvalues").addEventListener("click", function() {
+        document.getElementById("n1").value ='';
+        document.getElementById("n2").value ='';        
+        document.getElementById("sum").value ='';
+    });
+
+   
+</script>
+</body>
+</html>
