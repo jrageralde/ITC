@@ -14,7 +14,7 @@
 <p>
 <label for ="nnumbers">How many numbers to generate?</label>
 <input id="nnumbers" name="nnumbers" type ="number"></input>
-<button id="genumbers()">Generate the Numbers</button>
+<button id="gennumbers()">Generate the Numbers</button>
 </p>
 <p id="rnumbers"></p>
 <button id="sortnumbers()">Sort the Numbers</button>
@@ -27,7 +27,8 @@
 
 </body>
 <script>
-    function GenNumbers(){
+    document.getElementById("gennumbers").addEventListener("click", () => {
+    
         var nnumbers,n,j,rnumbers;
 
         nnumbers=document.getElementById("nnumbers").value;
