@@ -12,13 +12,13 @@
 <p>
 <label for="nlimit">Input a value for n:</label>
 <input id="nlimit" type="number"></input>
-<button onclick="ShowNumbers()">Show Numbers</button>
+<button id="shownumbers">Show Numbers</button>
 </p>
 <h3 id="ntitle"></h3>
 
 <p id="nnumbers"></p>
 <script>
-function ShowNumbers() {
+    document.getElementById("computesum").addEventListener("click", function() {
 
     var nlimit,i,ntext;
 
