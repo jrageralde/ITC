@@ -12,7 +12,7 @@
 <label for="base">Base</label> 
 <input id="base" name="base" type="number">
 
-<button id="computegrade"> Compute Grade </button>
+<button id="btncomputegrade"> Compute Grade </button>
 </p>
  
 <h2 id="grade"></h2>
@@ -30,7 +30,7 @@
   //  document.getElementById("computegrade").addEventListener("click", function() {
  // add a click event listener for computegrade button NEW JAVASCRIPT VERSION SYNTAX
  
- document.getElementById("computegrade").addEventListener("click", () => {
+ document.getElementById("btncomputegrade").addEventListener("click", () => {
   var x,y,z,lg,cm,cp;
 
   x = document.getElementById("score").value*1;  // automatically converts to number
