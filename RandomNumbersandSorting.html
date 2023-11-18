@@ -48,7 +48,7 @@
         document.getElementById("rnumbers").innerHTML=rnumbers;  
     }
 
-    function SortNumbers(){
+    document.getElementById("sortnumbers").addEventListener("click", () => {
         var rnumbers,j;
 
         Anumbers.sort(function(a, b){return a - b})
@@ -61,8 +61,8 @@
         document.getElementById("sortednumbers").innerHTML=rnumbers;  
     }
 
-
-     function ReverseNumbers(){
+     document.getElementById("reveresenumbers").addEventListener("click", () => {
+     
         var rnumbers,j;
 
         Anumbers.reverse(); // sort(function(a, b){return a - b})
