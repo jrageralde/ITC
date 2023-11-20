@@ -28,7 +28,7 @@
     </style>
 
 </head>
-<body onload="initcart()">
+<body>
 
 <h1>Simple Shopping Cart Version #3 - Styling the Cart</h1>
 <br>
@@ -67,6 +67,9 @@
 
 <p id="cart"></p>
 <script>
+    addEventListener("load",()=> {
+        initcart();
+    });
 
      document.getElementById("qty").addEventListener("keyup",()=>   
        { 
