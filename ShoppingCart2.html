@@ -33,7 +33,7 @@
 <p>
 <label for="items">Cart Items:</label>
 <input id="items" name="items" type="number" readonly></input>
-<button onclick="clearcart()">Clear Cart</button>
+<button id="clearcart">Clear Cart</button>
 <!--   <button onclick="showcart()">Show Cart</button> --> 
 <label for="delitem">Delete Item:</label>
 <input id="delitem" name="delitem" type="number" ></input>
@@ -54,16 +54,17 @@
     }
 
     // Clear Cart
-    function clearcart(){
+     document.getElementById("clearcart").addEventListener("click",()=>   
+       {
         var toclear;
 
         toclear=confirm("Delete all item(s) from cart ?");
 
         if (toclear) {
              initcart();
-        }
+         }
             
-    }
+      });
 
     // Add item to cart
     function addtocart(){
