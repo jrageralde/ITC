@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
- /head>
+    |<title>Shopping Cart Version 2</title>
+</head>
 <body onload="initcart()">
 
 <h1>Simple Shopping Cart Version #2 - Using HTML Tables to Display the Cart</h1>
@@ -23,9 +24,9 @@
 </select>
 
 <label for="qty">Quantity:</label>
-<input id="qty" name="qty" type="number" ></input>
+<input id="qty" name="qty" type="number" "></input>
 <label for="price">Unit Price:</label>
-<input id="price" name="price" type="number"></input>
+<input id="price" name="price" type="number""></input>
 <label for="amount">Amount:</label>
 <input id="amount" name="amount" type="number" readonly></input>
 <button id="addtocart">Add to Cart</button>
@@ -43,15 +44,26 @@
 <p id="cart"></p>
 <script>
 
-     document.getElementById("qty").addEventListener("keyup",()=>   
-       { 
-          computeamount();
-       });
 
-       document.getElementById("price").addEventListener("keyup",()=>   
-       { 
-          computeamount();
-       });
+    // Initialize cart CALLED ALSO IN BODY ONLOAD      
+    function initcart(){
+        cart=[];
+        document.getElementById("items").value=cart.length;
+        document.getElementById("cart").innerHTML="";
+
+            
+    }
+
+    document.getElementById("qty").addEventListener("keyup",()=>   
+     {  
+        computeamount();
+     });
+
+    document.getElementById("price").addEventListener("keyup",()=>   
+     {  
+        computeamount();
+     });
+  
     // Clear Cart
      document.getElementById("clearcart").addEventListener("click",()=>   
        {
@@ -187,17 +199,7 @@
 
 
     }
-
-    // Initialize cart CALLED ALSO IN BODY ONLOAD      
-    function initcart()
-     {
-        console.log("1.passed here.");       
-        cart=[];
-        document.getElementById("items").value=cart.length;
-        document.getElementById("cart").innerHTML="";
-
-            
-    }  
+  
 // Global variable
 var cart = []; 
 
