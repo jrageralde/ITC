@@ -37,7 +37,7 @@
 <!--   <button onclick="showcart()">Show Cart</button> --> 
 <label for="delitem">Delete Item:</label>
 <input id="delitem" name="delitem" type="number" ></input>
-<button onclick="deleteitem()" >Delete</button>  
+<button id="deleteitem" >Delete</button>  
 </p>
 
 <p id="cart"></p>
@@ -113,7 +113,9 @@
     }    
     
     // Delete item from chart
-    function deleteitem(){
+  document.getElementById("deleteitem").addEventListener("click",()=>   
+      {
+    
         var todelete;
         var itemno;
 
