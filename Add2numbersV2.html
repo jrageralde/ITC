@@ -11,6 +11,7 @@
 <input id="n2" name="n2" type="number">
 
 <button onclick="computesum()"> Compute Sum </button>
+ <button onclick="clearvalues()"> Clear Values </button>
 </p>
  
 <p>
@@ -42,7 +43,18 @@ function computesum()
    document.getElementById("sum").value=z;
 
 }
-   
+
+function clearvalues()
+{
+   var x,y;
+
+  // Retrieve the user input 
+  document.getElementById("n1").value='';
+  document.getElementById("n2").value='';
+  document.getElementById("sumlabel").innerHTML='';
+  document.getElementById("sum").value='';
+ 
+}
 </script>
 </body>
 </html>
