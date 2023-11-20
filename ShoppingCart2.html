@@ -28,7 +28,7 @@
 <input id="price" name="price" type="number" oninput="computeamount()"></input>
 <label for="amount">Amount:</label>
 <input id="amount" name="amount" type="number" readonly></input>
-<button onclick="addtocart()">Add to Cart</button>
+<button id="addtocart">Add to Cart</button>
 </p>
 <p>
 <label for="items">Cart Items:</label>
@@ -67,8 +67,9 @@
       });
 
     // Add item to cart
-    function addtocart(){
-         
+  document.getElementById("addtocart").addEventListener("click",()=>   
+       {
+        
          var cartitem = {
              "item": "1",
              "price": 0,
@@ -95,7 +96,7 @@
 
           showcart();
 
-    }
+    });
 
     // Compute Amount per Item
     function computeamount() {
