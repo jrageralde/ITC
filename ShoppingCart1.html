@@ -41,14 +41,19 @@
 
     // Initialize cart      
     document.getElementById("btninitcart").addEventListener("click", () => {
-    
-        cart=[];
+        initcart();  
+            
+    });
+
+  function initcart()
+  {
+          cart=[];
         document.getElementById("items").value=cart.length;
         document.getElementById("cartheader").innerHTML="";
         document.getElementById("cart").innerHTML="";
         document.getElementById("cartfooter").innerHTML="";
-            
-    });
+  
+  }
 
     // Add item to cart
   document.getElementById("btnaddtocart").addEventListener("click", () => {                                                         
