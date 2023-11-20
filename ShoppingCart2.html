@@ -22,9 +22,9 @@
 </select>
 
 <label for="qty">Quantity:</label>
-<input id="qty" name="qty" type="number" oninput="computeamount()"></input>
+<input id="qty" name="qty" type="number" "></input>
 <label for="price">Unit Price:</label>
-<input id="price" name="price" type="number" oninput="computeamount()"></input>
+<input id="price" name="price" type="number""></input>
 <label for="amount">Amount:</label>
 <input id="amount" name="amount" type="number" readonly></input>
 <button id="addtocart">Add to Cart</button>
@@ -52,6 +52,16 @@
             
     }
 
+    document.getElementById("qty").addEventListener("keyup",()=>   
+     {  
+        computeamount();
+     });
+
+    document.getElementById("price").addEventListener("keyup",()=>   
+     {  
+        computeamount();
+     });
+  
     // Clear Cart
      document.getElementById("clearcart").addEventListener("click",()=>   
        {
