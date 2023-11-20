@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
+        <style>
         #cart {
           font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
           border-collapse: collapse;
@@ -26,6 +25,7 @@
           color: white;
         }
     </style>
+
 </head>
 <body onload="initcart()">
 
@@ -52,23 +52,23 @@
 <input id="price" name="price" type="number" oninput="computeamount()"></input>
 <label for="amount">Amount:</label>
 <input id="amount" name="amount" type="number" readonly></input>
-<button onclick="addtocart()">Add to Cart</button>
+<button id="addtocart">Add to Cart</button>
 </p>
 <p>
 <label for="items">Cart Items:</label>
 <input id="items" name="items" type="number" readonly></input>
-<button onclick="clearcart()">Clear Cart</button>
+<button id="clearcart">Clear Cart</button>
 <!--   <button onclick="showcart()">Show Cart</button> --> 
 <label for="delitem">Delete Item:</label>
 <input id="delitem" name="delitem" type="number" ></input>
-<button onclick="deleteitem()" >Delete</button>  
+<button id="deleteitem" >Delete</button>  
 </p>
 
 <p id="cart"></p>
 <script>
 
 
-    // Initialize cart      
+    // Initialize cart CALLED ALSO IN BODY ONLOAD      
     function initcart(){
         cart=[];
         document.getElementById("items").value=cart.length;
@@ -78,20 +78,22 @@
     }
 
     // Clear Cart
-    function clearcart(){
+     document.getElementById("clearcart").addEventListener("click",()=>   
+       {
         var toclear;
 
         toclear=confirm("Delete all item(s) from cart ?");
 
         if (toclear) {
              initcart();
-        }
+         }
             
-    }
+      });
 
     // Add item to cart
-    function addtocart(){
-         
+  document.getElementById("addtocart").addEventListener("click",()=>   
+       {
+        
          var cartitem = {
              "item": "1",
              "price": 0,
@@ -118,7 +120,7 @@
 
           showcart();
 
-    }
+    });
 
     // Compute Amount per Item
     function computeamount() {
@@ -135,7 +137,9 @@
     }    
     
     // Delete item from chart
-    function deleteitem(){
+  document.getElementById("deleteitem").addEventListener("click",()=>   
+      {
+    
         var todelete;
         var itemno;
 
@@ -145,8 +149,8 @@
 
         if (todelete) {
 
-             cart.splice(itemno-1,1);
-             document.getElementById("items").value=cart.length;
+            cart.splice(itemno-1,1);
+            document.getElementById("items").value=cart.length;
              showcart();   
         }
 
@@ -174,7 +178,6 @@
         l = cart.length;
       
         
-      //  for (i=0,totalamount=0,carttext="",tbody='<tbody id="cart">';i<l;i++){
         for (i=0,totalamount=0,carttext="",tbody='';i<l;i++){
             ln=i+1;    
             tbody += "<tr>"
@@ -186,11 +189,11 @@
                 +"</tr>";
                        
             totalamount+=cart[i].itemamount();
-        
+          
 
         }
 
-       // tbody += "</tbody>";
+        //tbody += "</tbody>";
 
         // Generate table footer;
         tfooter ="<tfoot>";
@@ -205,7 +208,7 @@
 
        console.log(theader+tbody+tfooter);
         document.getElementById("cart").innerHTML=
-           '<table>'+theader+tbody+tfooter+'</table>';
+           "<table>"+theader+tbody+tfooter+"</table>";
 
 
     }
