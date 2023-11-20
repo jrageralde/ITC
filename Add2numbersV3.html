@@ -9,6 +9,7 @@
 <input id="n1" name="n1" type="number" onkeyup="computesum()">
 <label for="n2">Second Number</label> 
 <input id="n2" name="n2" type="number" onkeyup="computesum()">
+<button onclick="clearvalues()">Clear Values</button>
 
 </p>
    
@@ -36,6 +37,18 @@ function computesum()
     document.getElementById("sumlabel").innerHTML='The sum of '
        +x+' and '+y+' is:';
     document.getElementById("sum").value=z;
+}
+
+function clearvalues()
+{
+   var x,y;
+
+  // Retrieve the user input 
+  document.getElementById("n1").value='';
+  document.getElementById("n2").value='';
+  document.getElementById("sumlabel").innerHTML='';
+  document.getElementById("sum").value='';
+ 
 }
    
 </script>
