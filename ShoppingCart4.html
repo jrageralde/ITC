@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <style>
+   #maindiv {
+      display:grid;
+     grid-template-rows: 100px,100px,100px,100px,100px,
+                         100px,100px,100px,100px,100px,
+                         100px,100px,100px,100px,100px,
+                         100px,100px,100px,100px,100px;
+     grid-template-columns: 100px,100px,100px,100px,
+                            100px,100px,100px,100px;
+     width:98%;
+   }
+   h3 {
+     text-align:center;
+   }
+   h2 {
+     text-align:center;
+   }
+   #headerdiv{
+      grid-row-start:1;
+      grid-row-end:1;
+      grid-column-start:1;
+      grid-column-end:8;
+      background-color :#f2f2f2
+   }
+
+   #inputdiv{
+      grid-row-start:2;
+      grid-row-end:10;
+      grid-column-start:1;
+      grid-column-end:3;
+      width:400px;
+      border-top:solid 1px;
+      border-left:solid 1px;      
+      border-bottom:solid 1px;
+      border-right:solid 1px;  
+      height:250px;    
+
+   }
+
+  #buttonsdiv{
+      grid-row-start:2;
+      grid-row-end:10;
+      grid-column-start:4;
+      grid-column-end:4;
+      width:200px;   
+      padding-left:10px;
+
+
+   }
+
+ #cartdiv{
+      grid-row-start:2;
+      grid-row-end:20;
+      grid-column-start:5;
+      grid-column-end:8;
+      width:850px;
+      height:600px;
+      border-top:solid 1px;
+      border-left:solid 1px;      
+      border-bottom:solid 1px;
+      border-right:solid 1px;      
+
+   }
+
+ 
+   #btnaddtocart {
+      margin-top:80px;
+   }
+   #pagefooter {
+      text-align:center;
+      color:#ff99cc
+   }
+   #pageheader {
+      text-align:center;
+      color:#ff99cc
+   }
+
+   #totalamount {
+      text-align:right;
+    
+   }
+   .inputline{
+      margin-left:5px;
+   }
+
+   #itemstable {
+     margin-left:auto;
+     margin-right:auto;
+   }
+   #footerdiv{
+      grid-row-start:20;
+      grid-row-end:20;
+      grid-column-start:1;
+      grid-column-end:8;
+      background-color :#f2f2f2
+   }
+
+   #itemdesc {
+      width:200px;
+   }
+
+   #amountcolumn, #pricecolumn {
+      width:100px;
+   }
+
+   #tablebody tr:nth-child(even){background-color: #f2f2f2;}
+   #tablebody tr:nth-child(odd){background-color: #bfddf1;}
+
+ </style>  
+</head>
+<body>
+<div id="maindiv">
+   <div id ="footerdiv">
+      <h2 id="pagefooter">Copyright 2023</h2>     
+   </div>
+      <div id ="headerdiv">
+      <h2 id="pageheader">Shopping Cart</h2>     
+   </div>
+   <div id="inputdiv">
+      <h3>Choose Item</h3>
+      <label class="inputline" for="itemdesc">Item:</label>    
+      <select name="itemdesc" id="itemdesc">
+      <option value="sardines">sardines</option>
+      <option value="hotdog">hotdog</option>
+      <option value="shampoo">shampoo</option>
+      <option value="toothpaste">toothpaste</option>
+      <option value="noodles">noodles</option>
+      </select>
+      <br>
+      <label class="inputline" for="qty">Quantity:</label>
+      <input id="qty" type="number" ></input><br>
+      <label class="inputline" for="price">Unit Price:</label>
+      <input id="price" type="number"></input><br>
+      <label class="inputline" for="amount">Amount:</label>
+      <input id="amount" name="amount" type="number" readonly></input><br>
+   </div>
+   <div id="buttonsdiv">
+       <button id="btnaddtocart">Add Item</button>
+       <br><br>
+       <button id="btnclearcart">Clear Cart</button> 
+   </div>
+   <div id="cartdiv">
+      <h3>Cart Items</h3>
+      <table id="itemstable" border=1>
+          <thead>
+              <tr>
+                  <td>Item No.</td>
+                  <td id="itemdesc">Item Description</td>
+                  <td>Quantity</td>
+                  <td id="pricecolumn">Price</td>
+                  <td id="amountcolumn">Amount</td>
+              </tr>
+          </thead>
+          <tbody id="tablebody">
+          </tbody>
+          <tfoot>
+              <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Total</td>
+                  <td id="totalamount"></td>
+              </tr>
+          </tfoot>
+
+      </table>
+      <br><br>
+          <label class="inputline" for="items">Cart Items:</label>
+          <input id="items"  type="number" readonly></input>
+          
+          <label class="inputline" for="itemno">Delete Item:</label>
+          <input id="delitem" type="number"></input>
+          <button id="btndelete">Delete</button>
+          
+   </div>
+</div>
+<script>
+  document.addEventListener("load",
+  ()=>{
+     initcart();
+  });
+
+  document.getElementById("qty").addEventListener("keyup",
+  ()=>{
+    computeamount();
+  }
+  );
+
+  document.getElementById("price").addEventListener("keyup",
+  ()=>{
+    computeamount();
+  }
+  );
+
+  function computeamount()
+  {
+     var q,p,a;
+        q = document.getElementById("qty").value * 1;
+        p = document.getElementById("price").value * 1;        
+
+        a = q*p;
+
+        document.getElementById("amount").value=a;
+  }
+
+
+  document.getElementById("btndelete").addEventListener("click",
+   ()=>{
+     var x,l;
+
+     l = cart.length;
+
+     x=document.getElementById("delitem").value*1;
+
+     --x;
+    
+     if (x>=0 && x<l && confirm("Delete item "+(x+1)+"?")) {
+        cart.splice(x,1);
+        showcart();
+     }
+   
+
+   }
+   );
+   function initcart(){
+     cart=[];
+     document.getElementById("items").value=0;
+     document.getElementById("totalamount").innerHTML='';
+   }
+
+document.getElementById("btnaddtocart").addEventListener("click",
+    ()=>{
+        
+        var cartitem = {
+             "item": "1",
+             "price": 0,
+             "qty": 1,
+             "itemamount" : function itemamount(){
+                 return Math.round(this.price*this.qty*100)/100;  
+               }
+           };
+
+          cartitem.item=document.getElementById("itemdesc").value;
+          cartitem.qty=document.getElementById("qty").value;
+          cartitem.price=document.getElementById("price").value;
+
+         // console.log(cartitem.item);
+         // console.log(cartitem.qty);
+         // console.log(cartitem.price);
+
+          cart.push(cartitem);
+          showcart();
+    }
+    );
+
+    function showcart(){
+
+           var i,l,carttext,totalamount,ln;
+            var tbody;
+
+            document.getElementById("tablebody").innerHTML='';
+            l = cart.length;
+
+            for (i=0,totalamount=0,carttext="",tbody='';i<l;i++){
+            ln=i+1;    
+            tbody += "<tr>"
+                +'<td>'+ln+' </td>'
+                +'<td>'+cart[i].item+' </td>'
+                +'<td style="text-align:right">'+cart[i].qty+'</td>'
+                +'<td style="text-align:right">'+cart[i].price+'</td>'
+                +'<td style="text-align:right">'+cart[i].itemamount()+'</td>'                
+                +"</tr>";
+               
+                       
+                totalamount+=cart[i].itemamount();
+            }
+
+             document.getElementById("tablebody").innerHTML=tbody;
+
+             document.getElementById("items").value=l;
+             
+             document.getElementById("totalamount").innerHTML=''+totalamount;                
+
+        }
+
+            document.getElementById("btnclearcart").addEventListener("click",
+            ()=>{
+       
+              if (confirm("Clear the cart?"))
+                 initcart();
+                 showcart();
+            }
+    );
+
+
+   var cart=[];
+</script>
+</body>
+</html>
