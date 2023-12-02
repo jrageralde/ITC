@@ -253,14 +253,7 @@
 
         }
 
-            document.getElementById("btnclearcart").addEventListener("click",
-            ()=>{
-       
-              if (confirm("Clear the cart?"))
-                 initcart();
-                 showcart();
-            }
-    );
+
 
 
 // this is the main program here (like main|() in c or c++)
@@ -324,14 +317,17 @@
           showcart();
     }
     );
-
+  
+    document.getElementById("btnclearcart").addEventListener("click",
+         ()=>{
+       
+              if (confirm("Clear the cart?"))
+                 initcart();
+                 showcart();
+            }
+     );
 
   }  // window.onload
-
-  
-
-
-  
   
    var cart=[];
 </script>
