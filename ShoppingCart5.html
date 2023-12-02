@@ -183,29 +183,28 @@
 </div>
 <script>
 
- // convert a value to x decimal places
- function ConvertDecimal(v,x)
-  {
+ // convert a value to x deimal places
+    function ConvertDecimal(v,x)
+    {
      var rvalue;
-
-     if (isNaN(v)) {
+       
+       if (isNaN(v)) {
           rvalue = '';
-       } else {
+         } else {
            rvalue = v.toFixed(x);
        }
+     
      return rvalue;
-  }
- // convert and display decimal inputs to x places
-function ConvertDecimalElement(el,x)
+     }
+
+    // convert an element value to x decimal places
+    function ConvertDecimalElement(el,x)
     {
        var v = parseFloat(el.value);
-       el.value = ConvertDecimal(2);
-      // if (isNaN(v)) {
-      //    el.value = '';
-      // } else {
-       //    el.value = v.toFixed(2);
-      // }
+       return ConvertDecimal(v,x);
+
     }
+ 
 // compute amount;
  function computeamount()
   {
@@ -223,9 +222,9 @@ function ConvertDecimalElement(el,x)
 
      var input_qty= document.getElementById('qty');
      input_qty.addEventListener('change', function() {
-
-        ConvertDecimalElement(this,2);
-        computeamount();
+      
+      this.value=ConvertDecimalElement(this,2);
+      computeamount();
       }
       );
   }
@@ -234,6 +233,8 @@ function ConvertDecimalElement(el,x)
 
   document.getElementById("price").addEventListener("change",
   ()=>{
+
+   
     computeamount();
   }
   );
