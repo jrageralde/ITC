@@ -212,7 +212,7 @@
         q = document.getElementById("qty").value * 1;
         p = document.getElementById("price").value * 1;        
 
-        a = Convert(q*p,2);
+        a = ConvertDecimal(q*p,2);
 
         document.getElementById("amount").value=a;
   }
@@ -221,23 +221,24 @@
      initcart();
 
      var input_qty= document.getElementById('qty');
-     input_qty.addEventListener('change', function() {
+     input_qty.addEventListener('change', ()=> {
       
       this.value=ConvertDecimalElement(this,2);
       computeamount();
       }
       );
-  }
 
-  
+      var input_price=document.getElementById("price");
+     input_price.addEventListener("change",
+        ()=>{
+       this.value=ConvertDecimalElement(this,2);
+       computeamount();
+    }
+    );
 
-  document.getElementById("price").addEventListener("change",
-  ()=>{
+  }  // window.onload
 
-   
-    computeamount();
-  }
-  );
+
 
   
 
