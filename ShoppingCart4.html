@@ -187,14 +187,9 @@
      initcart();
   });
 
- function ConvertDecimal(el,x){el.value=parseFloat(el.value).toFixed(x);
-
-  var el = document.getElementById("qty")
   document.getElementById("qty").addEventListener("keyup",
   ()=>{
-
-    ConvertDecimal(el,2);
-   
+  
     computeamount();
   }
   );
