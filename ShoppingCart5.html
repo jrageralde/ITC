@@ -236,13 +236,7 @@
     }
     );
 
-  }  // window.onload
-
-
-
-  
-
-  document.getElementById("btndelete").addEventListener("click",
+   document.getElementById("btndelete").addEventListener("click",
    ()=>{
      var x,l;
 
@@ -257,16 +251,9 @@
         showcart();
      }
    
+   });
 
-   }
-   );
-   function initcart(){
-     cart=[];
-     document.getElementById("items").value=0;
-     document.getElementById("totalamount").innerHTML='';
-   }
-
-document.getElementById("btnaddtocart").addEventListener("click",
+  document.getElementById("btnaddtocart").addEventListener("click",
     ()=>{
         
         var cartitem = {
@@ -290,6 +277,19 @@ document.getElementById("btnaddtocart").addEventListener("click",
           showcart();
     }
     );
+
+
+  }  // window.onload
+
+  
+
+
+  
+   function initcart(){
+     cart=[];
+     document.getElementById("items").value=0;
+     document.getElementById("totalamount").innerHTML='';
+   }
 
     function showcart(){
 
