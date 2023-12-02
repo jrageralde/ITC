@@ -242,7 +242,7 @@
                 +"</tr>";
                
                        
-                totalamount+=cart[i].itemamount();
+                totalamount+=ConvertDecimal(cart[i].itemamount(),2);
             }
 
              document.getElementById("tablebody").innerHTML=tbody;
