@@ -182,25 +182,32 @@
    </div>
 </div>
 <script>
-  document.addEventListener("load",
-  ()=>{
-     initcart();
-  });
 
-  document.getElementById("qty").addEventListener("keyup",
-  ()=>{
-  
-    computeamount();
+ // convert a value to x decimal places
+ function ConvertDecimal(v,x)
+  {
+     var rvalue;
+
+     if (isNaN(v)) {
+          rvalue = '';
+       } else {
+           rvalue = v.toFixed(x);
+       }
+     return rvalue;
   }
-  );
-
-  document.getElementById("price").addEventListener("keyup",
-  ()=>{
-    computeamount();
-  }
-  );
-
-  function computeamount()
+ // convert and display decimal inputs to x places
+function ConvertDecimalElement(el,x)
+    {
+       var v = parseFloat(el.value);
+       el.value = ConvertDecimal(2);
+      // if (isNaN(v)) {
+      //    el.value = '';
+      // } else {
+       //    el.value = v.toFixed(2);
+      // }
+    }
+// compute amount;
+ function computeamount()
   {
      var q,p,a;
         q = document.getElementById("qty").value * 1;
@@ -211,6 +218,27 @@
         document.getElementById("amount").value=a;
   }
 
+ window.onload=()=>{
+     initcart();
+
+     var input_qty= document.getElementById('qty');
+     input_qty.addEventListener('change', function() {
+
+        ConvertDecimalElement(this,2);
+        computeamount();
+      }
+      );
+  }
+
+  
+
+  document.getElementById("price").addEventListener("change",
+  ()=>{
+    computeamount();
+  }
+  );
+
+  
 
   document.getElementById("btndelete").addEventListener("click",
    ()=>{
