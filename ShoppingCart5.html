@@ -263,7 +263,7 @@
      var input_qty= document.getElementById('qty');
      input_qty.addEventListener('change', ()=> {
       
-      this.value=ConvertDecimalElement(this,2);
+      this.value=ConvertDecimalElement(this,2); // You cant call this. if you dont declare var input_qty
       computeamount();
       }
       );
@@ -271,7 +271,7 @@
       var input_price=document.getElementById("price");
      input_price.addEventListener("change",
         ()=>{
-       this.value=ConvertDecimalElement(this,2);
+       this.value=ConvertDecimalElement(this,2);  // You cant call this. if you dont declare var input_price
        computeamount();
     }
     );
