@@ -236,9 +236,9 @@
             tbody += "<tr>"
                 +'<td>'+ln+' </td>'
                 +'<td>'+cart[i].item+' </td>'
-                +'<td style="text-align:right">'+cart[i].qty+'</td>'
-                +'<td style="text-align:right">'+cart[i].price+'</td>'
-                +'<td style="text-align:right">'+cart[i].itemamount()+'</td>'                
+                +'<td style="text-align:right">'+ConvertDecimal(cart[i].qty,2)+'</td>'
+                +'<td style="text-align:right">'+ConvertDecimal(cart[i].price,2)+'</td>'
+                +'<td style="text-align:right">'+ConvertDecimal(cart[i].itemamount(),2|)+'</td>'                
                 +"</tr>";
                
                        
@@ -249,7 +249,7 @@
 
              document.getElementById("items").value=l;
              
-             document.getElementById("totalamount").innerHTML=''+totalamount;                
+             document.getElementById("totalamount").innerHTML=''+Convert(totalamount,2);                
 
         }
 
