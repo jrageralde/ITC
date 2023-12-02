@@ -307,8 +307,8 @@
            };
 
           cartitem.item=document.getElementById("itemdesc").value;
-          cartitem.qty=document.getElementById("qty").value;
-          cartitem.price=document.getElementById("price").value;
+          cartitem.qty=ConvertDecimal(document.getElementById("qty").value*1,2);
+          cartitem.price=ConvertDecimal(document.getElementById("price").value*1,2);
 
          // console.log(cartitem.item);
          // console.log(cartitem.qty);
