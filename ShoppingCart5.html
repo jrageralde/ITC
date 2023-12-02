@@ -217,6 +217,53 @@
         document.getElementById("amount").value=a;
   }
 
+  function initcart(){
+     cart=[];
+     document.getElementById("items").value=0;
+     document.getElementById("totalamount").innerHTML='';
+   }
+
+    function showcart(){
+
+           var i,l,carttext,totalamount,ln;
+            var tbody;
+
+            document.getElementById("tablebody").innerHTML='';
+            l = cart.length;
+
+            for (i=0,totalamount=0,carttext="",tbody='';i<l;i++){
+            ln=i+1;    
+            tbody += "<tr>"
+                +'<td>'+ln+' </td>'
+                +'<td>'+cart[i].item+' </td>'
+                +'<td style="text-align:right">'+cart[i].qty+'</td>'
+                +'<td style="text-align:right">'+cart[i].price+'</td>'
+                +'<td style="text-align:right">'+cart[i].itemamount()+'</td>'                
+                +"</tr>";
+               
+                       
+                totalamount+=cart[i].itemamount();
+            }
+
+             document.getElementById("tablebody").innerHTML=tbody;
+
+             document.getElementById("items").value=l;
+             
+             document.getElementById("totalamount").innerHTML=''+totalamount;                
+
+        }
+
+            document.getElementById("btnclearcart").addEventListener("click",
+            ()=>{
+       
+              if (confirm("Clear the cart?"))
+                 initcart();
+                 showcart();
+            }
+    );
+
+
+
  window.onload=()=>{
      initcart();
 
@@ -285,52 +332,7 @@
 
 
   
-   function initcart(){
-     cart=[];
-     document.getElementById("items").value=0;
-     document.getElementById("totalamount").innerHTML='';
-   }
-
-    function showcart(){
-
-           var i,l,carttext,totalamount,ln;
-            var tbody;
-
-            document.getElementById("tablebody").innerHTML='';
-            l = cart.length;
-
-            for (i=0,totalamount=0,carttext="",tbody='';i<l;i++){
-            ln=i+1;    
-            tbody += "<tr>"
-                +'<td>'+ln+' </td>'
-                +'<td>'+cart[i].item+' </td>'
-                +'<td style="text-align:right">'+cart[i].qty+'</td>'
-                +'<td style="text-align:right">'+cart[i].price+'</td>'
-                +'<td style="text-align:right">'+cart[i].itemamount()+'</td>'                
-                +"</tr>";
-               
-                       
-                totalamount+=cart[i].itemamount();
-            }
-
-             document.getElementById("tablebody").innerHTML=tbody;
-
-             document.getElementById("items").value=l;
-             
-             document.getElementById("totalamount").innerHTML=''+totalamount;                
-
-        }
-
-            document.getElementById("btnclearcart").addEventListener("click",
-            ()=>{
-       
-              if (confirm("Clear the cart?"))
-                 initcart();
-                 showcart();
-            }
-    );
-
-
+  
    var cart=[];
 </script>
 </body>
