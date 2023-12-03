@@ -14,8 +14,8 @@
 <br>
 
 <p>
-<label for="itemdesc">Choose an item:</label>    
-<select name="itemdesc" id="itemdesc">
+<label for="itemselect">Choose an item:</label>    
+<select id="itemselect">
   <option value="sardines">sardines</option>
   <option value="hotdog">hotdog</option>
   <option value="shampoo">shampoo</option>
@@ -90,7 +90,7 @@
                }
             };
 
-          cartitem.item=document.getElementById("itemdesc").value;
+          cartitem.item=document.getElementById("itemselect").value;
           cartitem.qty=document.getElementById("qty").value;
           cartitem.price=document.getElementById("price").value;
 
