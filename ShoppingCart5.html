@@ -86,9 +86,9 @@
     
    }
    .inputlabel{
-      display:block;
+      display:inline-block;
       width: 80px;
-      text-align :right;
+      text-align :left;
    }
 
    #itemstable {
@@ -118,6 +118,15 @@
    #tablebody tr:nth-child(even){background-color: #f2f2f2;}
    #tablebody tr:nth-child(odd){background-color: #bfddf1;}
 
+   input {
+    width:100px;
+    text-align: right;
+   }
+
+   #itemselect {
+    width:120px;
+    text-align: left;
+   }
  </style>  
 </head>
 <body>
@@ -130,8 +139,8 @@
    </div>
    <div id="inputdiv">
       <h3>Choose Item</h3>
-      <label class="inputlabel" for="itemdesc">Item:</label>    
-      <select name="itemdesc" id="itemdesc">
+      <label class="inputlabel" for="itemselect">Item:</label>    
+      <select id="itemselect">
       <option value="sardines">sardines</option>
       <option value="hotdog">hotdog</option>
       <option value="shampoo">shampoo</option>
@@ -315,7 +324,7 @@
                }
            };
 
-          cartitem.item=document.getElementById("itemdesc").value;
+          cartitem.item=document.getElementById("itemselect").value;
           cartitem.qty=ConvertDecimal(document.getElementById("qty").value*1,2);
           cartitem.price=ConvertDecimal(document.getElementById("price").value*1,2);
 
