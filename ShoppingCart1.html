@@ -11,8 +11,8 @@
 <br>
 
 <p>
-<label for="itemdesc">Choose an item:</label>    
-<select name="itemdesc" id="itemdesc">
+<label for="itemselect">Choose an item:</label>    
+<select id="itemselect">
   <option value="sardines">sardines</option>
   <option value="hotdog">hotdog</option>
   <option value="shampoo">shampoo</option>
@@ -67,7 +67,7 @@
                }
             };
 
-          ci.item=document.getElementById("itemdesc").value;
+          ci.item=document.getElementById("itemselect").value;
           ci.qty=document.getElementById("qty").value;
           ci.price=document.getElementById("price").value;
 
