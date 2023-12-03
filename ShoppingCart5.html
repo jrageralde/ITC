@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -263,6 +264,7 @@
 
         }
 
+
 // this is the main program here--------------------------------- (like main() in c or c++)
  window.onload=()=>{
      initcart();
@@ -287,6 +289,16 @@
     input_price.addEventListener("keyup",
         ()=>{
         computeamount();
+    }
+    );
+
+    var itemselect=document.getElementById("itemselect");
+    itemselect.addEventListener("change",
+        ()=>{
+        document.getElementById("qty").value="";
+        document.getElementById("price").value="";
+        document.getElementById("amount").value="";
+
     }
     );
 
