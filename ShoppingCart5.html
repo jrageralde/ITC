@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,7 +86,7 @@
     
    }
    .inputlabel{
-      display:inline-block;
+      display:block;
       width: 80px;
       text-align :right;
    }
@@ -108,6 +109,10 @@
 
    #amountcolumn, #pricecolumn {
       width:100px;
+   }
+
+   #alignright {
+     text-align:right;
    }
 
    #tablebody tr:nth-child(even){background-color: #f2f2f2;}
@@ -135,11 +140,11 @@
       </select>
       <br>
       <label class="inputlabel" for="qty">Quantity:</label>
-      <input id="qty" type="number" ></input><br>
+      <input id="qty" class="alignright" type="number" ></input><br>
       <label class="inputlabel" for="price">Unit Price:</label>
       <input id="price" type="number"></input><br>
       <label class="inputlabel" for="amount">Amount:</label>
-      <input id="amount" name="amount" type="number" readonly></input><br>
+      <input id="amount" type="number" readonly></input><br>
    </div>
    <div id="buttonsdiv">
        <button id="btnaddtocart">Add Item</button>
@@ -175,7 +180,7 @@
           <label class="inputline" for="items">Cart Items:</label>
           <input id="items"  type="number" readonly></input>
           
-          <label class="inputline" for="itemno">Delete Item:</label>
+          <label class="inputline" for="delitem">Delete Item:</label>
           <input id="delitem" type="number"></input>
           <button id="btndelete">Delete</button>
           
@@ -197,14 +202,7 @@
      return rvalue;
      }
 
-    // convert an element value to x decimal places
-    function ConvertDecimalElement(el,x)
-    {
-       var v = parseFloat(el.value)*1;
-       return ConvertDecimal(v,x)*1;
 
-    }
- 
 // compute amount;
  function computeamount()
   {
@@ -265,20 +263,28 @@
      initcart();
 
      var input_qty= document.getElementById('qty');
-     input_qty.addEventListener("change", ()=> {
+     input_qty.addEventListener('change', e => {
+         e.currentTarget.value = parseFloat(e.currentTarget.value).toFixed(2)
+    });
+
+     input_qty.addEventListener("keyup", ()=> {
       
-      this.value=ConvertDecimalElement(this,2); // You cant call this. if you dont declare var input_qty
-      computeamount();
+            computeamount();
       }
-      );
+      );     
 
       var input_price=document.getElementById("price");
-     input_price.addEventListener("change",
+      input_price.addEventListener('change', e => {
+         e.currentTarget.value = parseFloat(e.currentTarget.value).toFixed(2)
+    });
+
+
+    input_price.addEventListener("keyup",
         ()=>{
-       this.value=ConvertDecimalElement(this,2);  // You cant call this. if you dont declare var input_price
-       computeamount();
+        computeamount();
     }
     );
+
 
    document.getElementById("btndelete").addEventListener("click",
    ()=>{
