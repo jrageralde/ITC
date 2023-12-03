@@ -189,12 +189,12 @@
      var rvalue;
        
        if (isNaN(v)) {
-          rvalue = '';
+          rvalue = 0;
          } else {
            rvalue = v.toFixed(x);
        }
      
-     return rvalue;
+     return rvalue*1;
      }
 
     // convert an element value to x decimal places
@@ -243,7 +243,7 @@
                 +"</tr>";
                
                        
-                totalamount=(totalamount*1)+ConvertDecimal(cart[i].itemamount()*1,2);
+                totalamount=(totalamount*1)+(ConvertDecimal(cart[i].itemamount()*1,2)*1);
             }
 
             console.log(totalamount);
