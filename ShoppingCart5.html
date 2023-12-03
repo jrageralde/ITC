@@ -245,12 +245,14 @@
                        
                 totalamount+=ConvertDecimal(cart[i].itemamount(),2);
             }
-
+     
+             totalamount=ConvertDecimal(totalamount,2);
+     
              document.getElementById("tablebody").innerHTML=tbody;
 
              document.getElementById("items").value=l;
              
-             document.getElementById("totalamount").innerHTML=''+ConvertDecimal(totalamount,2);                
+             document.getElementById("totalamount").innerHTML=''+totalamount);                
 
         }
 
