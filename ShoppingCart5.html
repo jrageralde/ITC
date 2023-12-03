@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -244,7 +243,7 @@
             tbody += "<tr>"
                 +'<td>'+ln+' </td>'
                 +'<td>'+cart[i].item+' </td>'
-                +'<td style="text-align:right">'+ConvertDecimal(cart[i].qty*1,2)+'</td>'
+                +'<td style="text-align:right">'+ConvertDecimal(cart[i].qty*1,0)+'</td>'
                 +'<td style="text-align:right">'+ConvertDecimal(cart[i].price*1,2)+'</td>'
                 +'<td style="text-align:right">'+ConvertDecimal(cart[i].itemamount()*1,2)+'</td>'                
                 +"</tr>";
@@ -273,7 +272,7 @@
 
      var input_qty= document.getElementById('qty');
      input_qty.addEventListener('change', e => {
-         e.currentTarget.value = parseFloat(e.currentTarget.value).toFixed(2)
+         e.currentTarget.value = parseFloat(e.currentTarget.value).toFixed(0)
     });
 
      input_qty.addEventListener("keyup", ()=> {
