@@ -200,8 +200,8 @@
     // convert an element value to x decimal places
     function ConvertDecimalElement(el,x)
     {
-       var v = parseFloat(el.value);
-       return ConvertDecimal(v,x);
+       var v = parseFloat(el.value)*1;
+       return ConvertDecimal(v,x)*1;
 
     }
  
