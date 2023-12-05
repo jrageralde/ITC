@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -197,6 +198,18 @@
           
    </div>
 </div>
+
+<!-- Simple pop-up dialog box, containing a form THIS IS NOT DISPLAYED BY DEFAULT -->
+<!--  this is only displayed by dlgConfirmCancel.showModal() -->
+<dialog id="dlgConfirmCancel">
+    <form method="dialog">
+       <h4 id="dlgmsg"></h4>   
+       <button id="btnConfirm" value="confirm" >Confirm</button>
+       <button id="btnCancel" value="cancel" >Cancel</button>
+       
+    </form>
+</dialog>
+
 <script type="text/javascript">
  //------------Global Functions
  // convert a value to x decimal places
@@ -268,10 +281,15 @@
 
 
 // this is the main program here--------------------------------- (like main() in c or c++)
- window.onload=()=>{
+(() => {
      initcart();
 
-     var input_qty= document.getElementById('qty');
+    const btnCancel = document.getElementById("btnCancel");
+    const btnConfirm= document.getElementById("btnConfirm");
+    const dlgConfirmCancel = document.getElementById("dlgConfirmCancel");
+    dlgConfirmCancel.returnValue = "confirm";
+
+     const input_qty= document.getElementById('qty');
      input_qty.addEventListener('change', e => {
          e.currentTarget.value = parseFloat(e.currentTarget.value).toFixed(0)
     });
@@ -282,7 +300,7 @@
       }
       );     
 
-      var input_price=document.getElementById("price");
+      const input_price=document.getElementById("price");
       input_price.addEventListener('change', e => {
          e.currentTarget.value = parseFloat(e.currentTarget.value).toFixed(2)
     });
@@ -294,7 +312,7 @@
     }
     );
 
-    var itemselect=document.getElementById("itemselect");
+    const itemselect=document.getElementById("itemselect");
     itemselect.addEventListener("change",
         ()=>{
         document.getElementById("qty").value="";
@@ -315,9 +333,11 @@
 
      --x;
     
-     if (x>=0 && x<l && confirm("Delete item "+(x+1)+"?")) {
-        cart.splice(x,1);
-        showcart();
+     if (x>=0 && x<l) { //  && confirm("Delete item "+(x+1)+"?")) {
+     //   cart.splice(x,1);
+      //  showcart();
+         document.getElementById("dlgmsg").innerHTML="Delete the item?"  
+         dlgConfirmCancel.showModal();  
      }
    
    });
@@ -350,13 +370,49 @@
     document.getElementById("btnclearcart").addEventListener("click",
          ()=>{
        
-              if (confirm("Clear the cart?"))
-                 initcart();
-                 showcart();
-            }
-     );
+         document.getElementById("dlgmsg").innerHTML="Clear the cart?"  
+         dlgConfirmCancel.showModal();  
 
-  }  // window.onload
+         });
+
+      // Form close button closes the dialog box
+    btnConfirm.addEventListener("click", () => {
+        dlgConfirmCancel.returnValue="confirm";
+      dlgConfirmCancel.close("confirm");
+ 
+    });
+
+       // Form close button closes the dialog box
+      btnCancel.addEventListener("click", () => {
+         dlgConfirmCancel.returnValue="cancel";
+         dlgConfirmCancel.close("cancel");
+ 
+    });
+
+
+    // ---- THIS IS THE FUNCTION THAT DOES CLEARING OF THE CART AND DELETION OF ITEMS
+    // ---- USING A MODAL DIALOG
+
+    dlgConfirmCancel.addEventListener("close",(e)=>
+    {
+        var rst=e.target.returnValue;
+        var lblmsg = document.getElementById("dlgmsg").innerHTML;
+        if (rst=="confirm") {
+            if (lblmsg=="Clear the cart?" ){ 
+               initcart();
+               showcart();
+            }  else if (lblmsg=="Delete the item?"){
+                var x=document.getElementById("delitem").value*1 - 1;
+                cart.splice(x,1);
+                showcart();
+                document.getElementById("delitem").value='';
+
+            } 
+        }
+        
+    });
+
+    })();  // THE MAIN PROGRAM MUST BE TERMINATED BY THIS!!!!
   
    var cart=[];
 </script>
