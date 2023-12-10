@@ -1,7 +1,124 @@
-/* Place your CSS styles in this file */
+   #maindiv {
+      display:grid;
+     grid-template-rows: 100px,100px,100px,100px,100px,
+                         100px,100px,100px,100px,100px,
+                         100px,100px,100px,100px,100px,
+                         100px,100px,100px,100px,100px;
+     grid-template-columns: 100px,100px,100px,100px,
+                            100px,100px,100px,100px;
+     width:98%;
+   }
+   h3 {
+     text-align:center;
+   }
+   h2 {
+     text-align:center;
+   }
+   #headerdiv{
+      grid-row-start:1;
+      grid-row-end:1;
+      grid-column-start:1;
+      grid-column-end:8;
+      background-color :#f2f2f2
+   }
 
-h1 {
-    text-align: center;
-    font-family: "Source Sans Pro", sans-serif;
-    font-weight: normal;
-}
+   #inputdiv{
+      grid-row-start:2;
+      grid-row-end:10;
+      grid-column-start:1;
+      grid-column-end:3;
+      width:400px;
+      padding-left:5px;
+      border-top:solid 1px;
+      border-left:solid 1px;      
+      border-bottom:solid 1px;
+      border-right:solid 1px;  
+      height:250px;    
+
+   }
+
+  #buttonsdiv{
+      grid-row-start:2;
+      grid-row-end:10;
+      grid-column-start:4;
+      grid-column-end:4;
+      width:200px;   
+      padding-left:15px;
+
+
+   }
+
+ #cartdiv{
+      grid-row-start:2;
+      grid-row-end:19;
+      grid-column-start:5;
+      grid-column-end:8;
+      padding-left:10px;
+      width:850px;
+      height:600px;
+      border-top:solid 1px;
+      border-left:solid 1px;      
+      border-bottom:solid 1px;
+      border-right:solid 1px;      
+
+   }
+
+ 
+   #btnaddtocart {
+      margin-top:80px;
+   }
+   #pagefooter {
+      text-align:center;
+      color:#ff99cc
+   }
+   #pageheader {
+      text-align:center;
+      color:#ff99cc
+   }
+
+   #totalamount {
+      text-align:right;
+    
+   }
+   .inputlabel{
+      display:inline-block;
+      width: 80px;
+      text-align :left;
+   }
+
+   #itemstable {
+     margin-left:auto;
+     margin-right:auto;
+   }
+   #footerdiv{
+      grid-row-start:20;
+      grid-row-end:20;
+      grid-column-start:1;
+      grid-column-end:8;
+      background-color :#f2f2f2
+   }
+
+   #itemdesc {
+      width:200px;
+   }
+
+   #amountcolumn, #pricecolumn {
+      width:100px;
+   }
+
+   #alignright {
+     text-align:right;
+   }
+
+   #tablebody tr:nth-child(even){background-color: #f2f2f2;}
+   #tablebody tr:nth-child(odd){background-color: #bfddf1;}
+
+   input {
+    width:100px;
+    text-align: right;
+   }
+
+   #itemselect {
+    width:120px;
+    text-align: left;
+   }
