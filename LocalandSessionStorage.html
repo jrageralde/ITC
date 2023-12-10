@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+      <br>
+      <label class="inputlabel" for="key">Key:</label>
+      <input id="key" type="text" ></input>
+      <label class="inputlabel" for="vl">Value:</label>
+      <input id="vl" type="text" ></input>
+      <br>
+      <button id="btnstore">Store to Local Storage</button>
+      <button id="btnsession">Store to Session Storage</button>
+
+
+<script type="text/javascript">
+
+function setLocalStorage(name,value){
+   localStorage.setItem(name,value);
+}
+
+function setSessionStorage(name,value){
+   sessionStorage.setItem(name,value);
+}
+// this is the main program here--------------------------------- (like main() in c or c++)
+(() => {
+
+  // localStorage.clear();
+ //  sessionStorage.clear();
+   const btnstore = document.getElementById("btnstore");
+   btnstore.addEventListener("click",()=>{
+       var key =  document.getElementById("key").value;
+        var vl =  document.getElementById("vl").value;
+        setLocalStorage(key,vl);
+
+    }
+   );   
+
+   const btnsession = document.getElementById("btnsession");
+   btnsession.addEventListener("click",()=>{
+       var key =  document.getElementById("key").value;
+        var vl =  document.getElementById("vl").value;
+        setSessionStorage(key,vl);
+    }
+   );   
+
+
+   })();  // THE MAIN PROGRAM MUST BE TERMINATED BY THIS!!!!
+</script>
+</body>
+</html>
