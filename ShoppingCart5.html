@@ -209,8 +209,18 @@
     </form>
 </dialog>
 
+<dialog id="dlgAreYouSure">
+    <form method="dialog">
+       <h4 id="dlgmsg">Are you sure?</h4>   
+       <button id="btnYes" value="yes" >Yes</button>
+       <button id="btnNo" value="no" >No</button>
+       
+    </form>
+</dialog>
+
 <script type="text/javascript">
  //------------Global Functions
+
  // convert a value to x decimal places
     function ConvertDecimal(v,x)
     {
@@ -281,12 +291,19 @@
 
 // this is the main program here--------------------------------- (like main() in c or c++)
 (() => {
+
      initcart();
 
     const btnCancel = document.getElementById("btnCancel");
     const btnConfirm= document.getElementById("btnConfirm");
     const dlgConfirmCancel = document.getElementById("dlgConfirmCancel");
     dlgConfirmCancel.returnValue = "confirm";
+
+
+    const btnYes = document.getElementById("btnYes");
+    const btnNo= document.getElementById("btnNo");
+    const dlgAreYouSure = document.getElementById("dlgAreYouSure");
+    dlgAreYouSure.returnValue = "no";
 
      const input_qty= document.getElementById('qty');
      input_qty.addEventListener('change', e => {
@@ -333,9 +350,8 @@
      --x;
     
      if (x>=0 && x<l) { //  && confirm("Delete item "+(x+1)+"?")) {
-     //   cart.splice(x,1);
-      //  showcart();
-         document.getElementById("dlgmsg").innerHTML="Delete the item?"  
+
+         document.getElementById("dlgmsg").innerHTML="Delete the item "+(x+1)+" "+cart[x].item+"?"  
          dlgConfirmCancel.showModal();  
      }
    
@@ -367,12 +383,12 @@
     );
   
     document.getElementById("btnclearcart").addEventListener("click",
-         ()=>{
+   ()=>{
        
          document.getElementById("dlgmsg").innerHTML="Clear the cart?"  
          dlgConfirmCancel.showModal();  
 
-         });
+   });
 
       // Form close button closes the dialog box
     btnConfirm.addEventListener("click", () => {
@@ -382,25 +398,42 @@
     });
 
        // Form close button closes the dialog box
-      btnCancel.addEventListener("click", () => {
+   btnCancel.addEventListener("click", () => {
          dlgConfirmCancel.returnValue="cancel";
          dlgConfirmCancel.close("cancel");
  
     });
 
+      // Form close button closes the dialog box
+    btnYes.addEventListener("click", () => {
+        dlgAreYouSure.returnValue="yes";
+      dlgConfirmCancel.close("yes");
+ 
+    });
+
+     // Form close button closes the dialog box
+    btnNo.addEventListener("click", () => {
+        dlgAreYouSure.returnValue="no";
+      dlgConfirmCancel.close("no");
+ 
+    });
+
+   
+   
 
     // ---- THIS IS THE FUNCTION THAT DOES CLEARING OF THE CART AND DELETION OF ITEMS
     // ---- USING A MODAL DIALOG
 
     dlgConfirmCancel.addEventListener("close",(e)=>
     {
-        var rst=e.target.returnValue;
+        var rst= e.target.returnValue;
         var lblmsg = document.getElementById("dlgmsg").innerHTML;
         if (rst=="confirm") {
             if (lblmsg=="Clear the cart?" ){ 
-               initcart();
-               showcart();
-            }  else if (lblmsg=="Delete the item?"){
+               dlgAreYouSure.showModal();
+              //  initcart();
+              // showcart();
+            }  else if (lblmsg.substring(0,15)=="Delete the item"){
                 var x=document.getElementById("delitem").value*1 - 1;
                 cart.splice(x,1);
                 showcart();
@@ -408,6 +441,19 @@
 
             } 
         }
+        
+    });
+
+
+    dlgAreYouSure.addEventListener("close",(e)=>
+    {
+        var rst= e.target.returnValue;
+        var lblmsg = document.getElementById("dlgmsg").innerHTML;
+        if (rst=="yes" && lblmsg=="Clear the cart?" ){ 
+               
+                initcart();
+               showcart();
+            }        
         
     });
 
